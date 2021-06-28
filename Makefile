@@ -12,7 +12,7 @@ OUTPUT=main
 $(OUTPUT): main.c
 	$(CC) $(CCFLAGS) main.c -o $(OUTPUT)
 
-.PHONY: clean debug
+.PHONY: clean debug run
 
 TTY:=/dev/null
 
@@ -22,3 +22,5 @@ clean:
 debug: $(OUTPUT)
 	$(GD) $(GDFLAGS) -ex "tty $(TTY)" -ex "source gdbinit"
 
+run: $(OUTPUT)
+	./$(OUTPUT)
